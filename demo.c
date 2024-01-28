@@ -714,10 +714,10 @@ int main(int argc, char **argv)
 	ColorTest(screenWidth, screenHeight);
 	WAIT;
 
-	// JPEGTest("./images/RaspberryPi_240x240.jpg", screenWidth, screenHeight, false);
-	// WAIT;
-	// JPEGTest("./images/RaspberryPi_240x240.jpg", screenWidth, screenHeight, true);
-	// WAIT;
+	JPEGTest("./images/RaspberryPi_240x240.jpg", screenWidth, screenHeight, false);
+	WAIT;
+	JPEGTest("./images/RaspberryPi_240x240.jpg", screenWidth, screenHeight, true);
+	WAIT;
 
 	PNGTest("./images/Ubuntu_log.png", screenWidth, screenHeight, false);
 	WAIT;

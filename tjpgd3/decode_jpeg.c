@@ -28,6 +28,8 @@ format if you want to use a different image file.
 
 #define	_DEBUG_	0
 
+#define rgb565(r, g, b) (((r & 0xF8) << 8) | ((g & 0xFC) << 3) | (b >> 3))
+
 //Data that is passed from the decoder function to the infunc/outfunc functions.
 typedef struct {
 	pixel_jpeg **outData;  // Array of IMAGE_H pointers to arrays of 16-bit pixel values
