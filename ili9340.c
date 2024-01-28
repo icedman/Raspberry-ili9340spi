@@ -80,6 +80,11 @@ int _height;
 int _offsetx;
 int _offsety;
 
+int _clipX1;
+int _clipY1;
+int _clipX2;
+int _clipY2;
+
 #ifdef WPI
 // Write Command 8Bit
 // D/C=LOW then,write command(8bit)
@@ -177,6 +182,8 @@ void lcdInit(int width, int height, int offsetx, int offsety){
   _height = height;
   _offsetx = offsetx;
   _offsety = offsety;
+
+  lcdClearClipRect();
 
 #ifdef GPIO
   printf("Using wiringPiSetupGpio\n");
@@ -391,6 +398,13 @@ void lcdDrawPixel(uint16_t x, uint16_t y, uint16_t color){
   if (x >= _width) return;
   if (y >= _height) return;
 
+  if (_clipX1 != _clipX2 && _clipY1 != _clipY2) {
+    if (x < _clipX1 || x > _clipX2 ||
+        y < _clipY1 || y > _clipY2) {
+      return;
+    }
+  }
+
   uint16_t _x = x + _offsetx;
   uint16_t _y = y + _offsety;
   lcdWriteCommandByte(0x2A); // set column(x) address
@@ -416,6 +430,22 @@ void lcdDrawFillRect(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2, uint16_
   if (x2 >= _width) x2=_width-1;
   if (y1 >= _height) return;
   if (y2 >= _height) y2=_height-1;
+
+  if (_clipX1 != _clipX2 && _clipY1 != _clipY2) {
+    if (x1 < _clipX1) {
+      x1 = _clipX1;
+    }
+    if (x2 > _clipX2) {
+      x2 = _clipX2;
+    }
+    if (y1 < _clipY1) {
+      y1 = _clipY1;
+    }
+    if (y2 > _clipY2) {
+      y2 = _clipY2;
+    }
+  }
+
 
   uint16_t _x1 = x1 + _offsetx;
   uint16_t _x2 = x2 + _offsetx;
@@ -898,3 +928,19 @@ void lcdUnsetFontUnderLine(void) {
   _FONT_UNDER_LINE_ = false;
 }
 
+
+void lcdSetClipRect(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
+{
+  _clipX1 = x1;
+  _clipY1 = y1;
+  _clipX2 = x2;
+  _clipY2 = y2;
+}
+
+void lcdClearClipRect()
+{
+  _clipX1 = 0;
+  _clipY1 = 0;
+  _clipX2 = 0;
+  _clipY2 = 0;
+}

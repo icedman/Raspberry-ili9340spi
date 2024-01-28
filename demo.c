@@ -684,6 +684,8 @@ int main(int argc, char **argv)
 	CircleTest(screenWidth, screenHeight);
 	WAIT;
 
+	// lcdSetClipRect(0, 0, 120, 320);
+	
 	RoundRectTest(screenWidth, screenHeight);
 	WAIT;
 

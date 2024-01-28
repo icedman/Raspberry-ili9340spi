@@ -46,3 +46,6 @@ void lcdSetFontFill(uint16_t color);
 void lcdUnsetFontFill(void);
 void lcdSetFontUnderLine(uint16_t color);
 void lcdUnsetFontUnderLine(void);
+
+void lcdSetClipRect(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2);
+void lcdClearClipRect();
