@@ -8,8 +8,8 @@
 #include "ili9340.h"
 #include "xpt2046.h"
 
-#define T_CS BCM2835_SPI_CS1
-#define T_IRQ RPI_V2_GPIO_P1_22
+#define T_CS 7 // BCM2835_SPI_CS1
+#define T_IRQ 17 // RPI_V2_GPIO_P1_22
 #define _DEBUG_ 0
 
 TouchInfo tinfo;

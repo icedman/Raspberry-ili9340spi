@@ -56,8 +56,13 @@
 
 #ifdef BCM
 #include <bcm2835.h>
-#define D_C 17  // BCM IO17=Pin#11
-#define RES 18  // BCM IO18=Pin#12
+// #define D_C 17  // BCM IO17=Pin#11
+// #define RES 18  // BCM IO18=Pin#12
+
+// SHCHV 2.4" RPi Display
+#define D_C 22  // BCM IO17=Pin#11
+#define RES 27  // BCM IO18=Pin#12
+
 #endif
 
 #include "ili9340.h"

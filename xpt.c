@@ -6,9 +6,9 @@
 #include "bcm2835.h"
 #include "xpt2046.h"
 
-#define T_CS BCM2835_SPI_CS1
-#define RES RPI_V2_GPIO_P1_11
-#define T_IRQ RPI_V2_GPIO_P1_22
+#define T_CS 7 // BCM2835_SPI_CS1
+#define RES 9 // RPI_V2_GPIO_P1_11
+#define T_IRQ 17 // RPI_V2_GPIO_P1_22
 
 int main (int argc, char **argv){
 	int	x, y;

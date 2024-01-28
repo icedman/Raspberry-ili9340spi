@@ -45,11 +45,11 @@ void xptGetxy(int chipSelect, int *xp, int *yp){
 	bcm2835_spi_begin();
 
 	bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);
-	bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_1024);
-	//bcm2835_spi_chipSelect(BCM2835_SPI_CS1);
-	bcm2835_spi_chipSelect(chipSelect);
-	//bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS1, LOW);
-	bcm2835_spi_setChipSelectPolarity(chipSelect, LOW);
+	// bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_1024);
+	bcm2835_spi_chipSelect(BCM2835_SPI_CS1);
+	// bcm2835_spi_chipSelect(chipSelect);
+	bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS1, LOW);
+	// bcm2835_spi_setChipSelectPolarity(chipSelect, LOW);
 
 #if 0
 	*xp = xptGetit(XPT_START | XPT_XPOS);
